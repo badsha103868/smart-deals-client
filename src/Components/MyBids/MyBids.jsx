@@ -11,12 +11,13 @@ const MyBids = () => {
   // access token 
   console.log('access token ', user.accessToken)
 
-  // bids data load
+  // local storage theke token naua
+
   useEffect(() => {
     if (user?.email) {
       fetch(`http://localhost:3000/bids?email=${user.email}`, {
          headers: {
-          authorization : `Bearer ${user.accessToken}`
+          authorization : `Bearer ${localStorage.getItem('token')}`
         }
         
       })
@@ -27,6 +28,25 @@ const MyBids = () => {
         });
     }
   }, [user]);
+   
+  // bids data load
+
+
+  // useEffect(() => {
+  //   if (user?.email) {
+  //     fetch(`http://localhost:3000/bids?email=${user.email}`, {
+  //        headers: {
+  //         authorization : `Bearer ${user.accessToken}`
+  //       }
+        
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //         setBids(data);
+  //       });
+  //   }
+  // }, [user]);
 
   // delete
   const handleDeleteBid =(_id)=>{
