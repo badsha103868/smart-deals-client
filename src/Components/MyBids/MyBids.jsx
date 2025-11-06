@@ -20,6 +20,7 @@ const MyBids = () => {
           authorization : `Bearer ${localStorage.getItem('token')}`
         }
         
+        
       })
         .then((res) => res.json())
         .then((data) => {
